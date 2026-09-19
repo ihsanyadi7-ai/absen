@@ -1,0 +1,175 @@
+:root {
+  --biru-tua: #0b3d91;
+  --biru-muda: #4a90e2;
+  --hijau: #28a745;
+  --merah: #dc3545;
+  --kuning: #ffc107;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f4f6fa;
+}
+
+/* Splash */
+.splash-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0b3d91 0%, #4a90e2 100%);
+}
+.splash-container { max-width: 500px; padding: 30px; }
+.splash-logo {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  animation: floatLogo 2s ease-in-out infinite;
+}
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--biru-tua);
+  min-height: 100vh;
+  color: #fff;
+  padding: 20px 0;
+  position: fixed;
+  width: 250px;
+  transition: 0.3s;
+  z-index: 1000;
+}
+.sidebar .brand {
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sidebar .brand img { width: 45px; height: 45px; object-fit: contain; }
+.sidebar .brand h6 { margin: 0; font-weight: 700; font-size: 14px; }
+.sidebar .brand small { font-size: 11px; opacity: 0.8; }
+.sidebar .nav-link {
+  color: #dbe4f5;
+  padding: 12px 20px;
+  border-left: 3px solid transparent;
+  font-size: 15px;
+}
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: rgba(255,255,255,0.1);
+  border-left-color: var(--kuning);
+  color: #fff;
+}
+
+/* Main content */
+.main-content {
+  margin-left: 250px;
+  padding: 20px 25px;
+  min-height: 100vh;
+}
+@media (max-width: 991px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.show { transform: translateX(0); }
+  .main-content { margin-left: 0; }
+}
+
+/* Stat cards */
+.stat-card {
+  border-radius: 14px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+.stat-card h3 { font-size: 32px; margin: 0; font-weight: 700; }
+.stat-card p { margin: 0; opacity: 0.9; font-size: 14px; }
+.bg-1 { background: linear-gradient(135deg, #0b3d91, #4a90e2); }
+.bg-2 { background: linear-gradient(135deg, #28a745, #5cd65c); }
+.bg-3 { background: linear-gradient(135deg, #ff9800, #ffc107); }
+.bg-4 { background: linear-gradient(135deg, #dc3545, #ff6b6b); }
+.bg-5 { background: linear-gradient(135deg, #6a11cb, #2575fc); }
+
+.card-custom {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+/* Scan area */
+.scan-box {
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.scan-box video, .scan-box canvas { width: 100%; height: auto; }
+.scan-frame {
+  position: absolute;
+  width: 70%;
+  height: 60%;
+  border: 3px dashed var(--kuning);
+  border-radius: 12px;
+  top: 20%;
+  left: 15%;
+  pointer-events: none;
+}
+
+/* Kartu Barcode */
+.kartu {
+  width: 320px;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  border: 2px solid var(--biru-tua);
+}
+.kartu-header {
+  background: var(--biru-tua);
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+}
+.kartu-header img { width: 50px; height: 50px; object-fit: contain; }
+.kartu-header h6 { margin: 4px 0 0; font-weight: 700; font-size: 13px; }
+.kartu-body { padding: 15px; }
+.kartu-body .foto {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--biru-muda);
+  display: block;
+  margin: 0 auto 10px;
+}
+.kartu-body table { font-size: 13px; }
+.kartu-footer {
+  text-align: center;
+  padding: 10px;
+  background: #f4f6fa;
+  border-top: 1px dashed #ccc;
+}
+
+/* Badge status */
+.badge-hadir { background: var(--hijau); }
+.badge-telat { background: var(--kuning); color: #333; }
+.badge-absen { background: var(--merah); }
+
+/* Mobile toggle */
+.btn-toggle {
+  display: none;
+  position: fixed;
+  top: 15px; left: 15px;
+  z-index: 1100;
+  background: var(--biru-tua);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+@media (max-width: 991px) { .btn-toggle { display: block; } }
